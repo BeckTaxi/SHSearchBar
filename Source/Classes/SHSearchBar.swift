@@ -273,6 +273,11 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
     func updateCancelButtonVisibility(makeVisible show: Bool) {
 
+        // If not skipped it causes visual glitches
+        if !self.config.useCancelButton {
+            return
+        }
+        
         // This 'complex' if-else avoids constraint warnings in the console
         if show && config.useCancelButton {
             bgToParentConstraint.isActive = false
